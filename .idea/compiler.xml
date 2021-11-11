@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ScwProject03-admin-component" />
+        <module name="ScwProject02-admin-webui" />
+        <module name="ScwProject07-member-parent" />
+        <module name="ScwProject06-common-reverse" />
+        <module name="extra01-ajax" />
+        <module name="scwproject10-member-mysql-provider" />
+        <module name="scwproject11-member-redis-provider" />
+        <module name="scwproject12-member-authentication-consumer" />
+        <module name="scwproject16-member-zuul" />
+        <module name="scwproject07-member-parent" />
+        <module name="ScwProject04-admin-entity" />
+        <module name="scwproject09-member-entity" />
+        <module name="scwproject08-member-eureka" />
+        <module name="ScwProject05-common-util" />
+        <module name="scwproject14-member-order-consumer" />
+        <module name="scwproject17-member-api" />
+        <module name="scwproject15-member-pay-consumer" />
+        <module name="scwproject13-member-project-consumer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="extra01-ajax" target="1.8" />
+      <module name="ScwProject01-admin-parent" target="1.8" />
+      <module name="ScwProject02-admin-webui" target="1.8" />
+      <module name="ScwProject03-admin-component" target="1.8" />
+      <module name="ScwProject04-admin-entity" target="1.8" />
+      <module name="ScwProject05-common-util" target="1.8" />
+      <module name="ScwProject06-common-reverse" target="1.8" />
+      <module name="scwproject07-member-parent" target="1.8" />
+      <module name="ScwProject07-member-parent" target="1.5" />
+      <module name="scwproject08-member-eureka" target="1.8" />
+      <module name="scwproject09-member-entity" target="1.8" />
+      <module name="scwproject10-member-mysql-provider" target="1.8" />
+      <module name="scwproject11-member-redis-provider" target="1.8" />
+      <module name="scwproject12-member-authentication-consumer" target="1.8" />
+      <module name="scwproject13-member-project-consumer" target="1.8" />
+      <module name="scwproject14-member-order-consumer" target="1.8" />
+      <module name="scwproject15-member-pay-consumer" target="1.8" />
+      <module name="scwproject16-member-zuul" target="1.8" />
+      <module name="scwproject17-member-api" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ScwProject07-member-parent" options="" />
+      <module name="scwproject07-member-parent" options="" />
+      <module name="scwproject08-member-eureka" options="" />
+      <module name="scwproject09-member-entity" options="" />
+      <module name="scwproject10-member-mysql-provider" options="" />
+      <module name="scwproject11-member-redis-provider" options="" />
+      <module name="scwproject12-member-authentication-consumer" options="" />
+      <module name="scwproject13-member-project-consumer" options="" />
+      <module name="scwproject14-member-order-consumer" options="" />
+      <module name="scwproject15-member-pay-consumer" options="" />
+      <module name="scwproject16-member-zuul" options="" />
+      <module name="scwproject17-member-api" options="" />
+    </option>
+  </component>
+</project>

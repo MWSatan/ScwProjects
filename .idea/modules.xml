@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ScwProject01-admin-parent/ScwProject01-admin-parent.iml" filepath="$PROJECT_DIR$/ScwProject01-admin-parent/ScwProject01-admin-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScwProject02-admin-webui/ScwProject02-admin-webui.iml" filepath="$PROJECT_DIR$/ScwProject02-admin-webui/ScwProject02-admin-webui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScwProject03-admin-component/ScwProject03-admin-component.iml" filepath="$PROJECT_DIR$/ScwProject03-admin-component/ScwProject03-admin-component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScwProject04-admin-entity/ScwProject04-admin-entity.iml" filepath="$PROJECT_DIR$/ScwProject04-admin-entity/ScwProject04-admin-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScwProject05-common-util/ScwProject05-common-util.iml" filepath="$PROJECT_DIR$/ScwProject05-common-util/ScwProject05-common-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScwProject06-common-reverse/ScwProject06-common-reverse.iml" filepath="$PROJECT_DIR$/ScwProject06-common-reverse/ScwProject06-common-reverse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/extra01-ajax/extra01-ajax.iml" filepath="$PROJECT_DIR$/extra01-ajax/extra01-ajax.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scwproject07-member-parent/scwproject07-member-parent.iml" filepath="$PROJECT_DIR$/scwproject07-member-parent/scwproject07-member-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scwproject08-member-eureka/scwproject08-member-eureka.iml" filepath="$PROJECT_DIR$/scwproject08-member-eureka/scwproject08-member-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scwproject09-member-entity/scwproject09-member-entity.iml" filepath="$PROJECT_DIR$/scwproject09-member-entity/scwproject09-member-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scwproject10-member-mysql-provider/scwproject10-member-mysql-provider.iml" filepath="$PROJECT_DIR$/scwproject10-member-mysql-provider/scwproject10-member-mysql-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scwproject11-member-redis-provider/scwproject11-member-redis-provider.iml" filepath="$PROJECT_DIR$/scwproject11-member-redis-provider/scwproject11-member-redis-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scwproject12-member-authentication-consumer/scwproject12-member-authentication-consumer.iml" filepath="$PROJECT_DIR$/scwproject12-member-authentication-consumer/scwproject12-member-authentication-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scwproject13-member-project-consumer/scwproject13-member-project-consumer.iml" filepath="$PROJECT_DIR$/scwproject13-member-project-consumer/scwproject13-member-project-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scwproject14-member-order-consumer/scwproject14-member-order-consumer.iml" filepath="$PROJECT_DIR$/scwproject14-member-order-consumer/scwproject14-member-order-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scwproject15-member-pay-consumer/scwproject15-member-pay-consumer.iml" filepath="$PROJECT_DIR$/scwproject15-member-pay-consumer/scwproject15-member-pay-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scwproject16-member-zuul/scwproject16-member-zuul.iml" filepath="$PROJECT_DIR$/scwproject16-member-zuul/scwproject16-member-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scwproject17-member-api/scwproject17-member-api.iml" filepath="$PROJECT_DIR$/scwproject17-member-api/scwproject17-member-api.iml" />
+    </modules>
+  </component>
+</project>

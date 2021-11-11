@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+
+        <!--       数据库信息-->
+        <property name="username" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="driverClassName" value="${jdbc.driver}"/>
+
+
+    </bean>
+    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
+
+        <!--        装备数据源-->
+        <property name="dataSource" ref="dataSource"/>
+
+        <!--        指定mybatis全局配置文件位置-->
+
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+
+        <!--        指定mapper配置文件的位置-->
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*Mapper.xml"/>
+
+
+        <!--       分页-->
+        <!-- 配置插件 -->
+        <property name="plugins">
+            <array>
+                <!-- 配置PageHelper插件 -->
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <props>
+                            <!-- 配置数据库方言，告诉PageHelper当前使用的数据库 -->
+                            <prop key="dialect">mysql</prop>
+
+                            <!-- 配置页码的合理化修正，在1~总页数之间修正页码 -->
+                            <prop key="reasonable">true</prop>
+                        </props>
+                    </property>
+                </bean>
+            </array>
+        </property>
+
+
+
+    </bean>
+
+    <!-- 配置 MapperScannerConfigurer -->
+    <!-- 把 MyBatis 创建的 Mapper 接口类型的代理对象扫描到 IOC 容器中 -->
+    <bean id="mapperScannerConfigurer"
+          class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 使用 basePackage 属性指定 Mapper 接口所在包 -->
+        <property name="basePackage" value="com.XYF.crowd.mapper"/>
+    </bean>
+
+
+    <!--     配置 mapper 扫描器 -->
+    <!--    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+    <!--        <property name="basePackage" value="com.XYF.crowd.mapper"/>-->
+    <!--    </bean>-->
+
+</beans>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--    自动扫描mvc-->
+    <context:component-scan base-package="com.XYF.crowd.mvc"/>
+
+    <!--    配置视图解析器-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+        <!--        前缀-->
+        <property name="prefix" value="/WEB-INF/"/>
+        <!--        后缀-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--    添加注解驱动-->
+    <mvc:annotation-driven/>
+
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/fonts/" mapping="/fonts/**"/>
+    <mvc:resources location="/bootstrap/" mapping="/bootstrap/**"/>
+    <mvc:resources location="/img/" mapping="/img/**"/>
+    <mvc:resources location="/jquery/" mapping="/jquery/**"/>
+    <mvc:resources location="/layer/" mapping="/layer/**"/>
+    <mvc:resources location="/script/" mapping="/script/**"/>
+    <mvc:resources location="/myJs/" mapping="/myJs/**"/>
+
+
+    <!--基于xml的异常映射-->
+
+    <bean id="simpleMappingException" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!--        配置异常机制和具体视图页面的对应关系-->
+        <property name="exceptionMappings">
+            <props>
+                <!--                key指定异常全类名-->
+                <!--                标签内写对应的视图，这个值需要拼前后缀得到具体路径（即需要配置视图解析器）-->
+                <!--                配置完成后若出现错误，异常信息会放到请求域中，在错误提示页面可以从请求域中取出来-->
+                <prop key="java.lang.Exception">error</prop>
+                <prop key="com.XYF.crowd.exception.LoginFailedException">admin-login</prop>
+                <prop key="com.XYF.crowd.exception.IllegalLoginException">admin-login</prop>
+
+
+            </props>
+        </property>
+    </bean>
+
+
+    <!--    配置view-controller,直接把请求地址和视图名称关联起来，不必写handler方法了-->
+    <!--
+       @RequestMapping("...")
+       public String toLoginPage(){
+            return "admin-login";
+       }
+
+       这个代替掉了上面的代码
+    -->
+    <mvc:view-controller path="/login/page.html" view-name="admin-login"/>
+
+    <!--    为了避免跳转到后台主页面再刷新浏览器导致重复提交登录表单，重定向到目标页面-->
+    <mvc:view-controller path="/main/page.html" view-name="admin-main"/>
+    <mvc:view-controller path="/admin/to/add/page.html" view-name="admin-add"/>
+    <mvc:view-controller path="/role/to/page.html" view-name="role-page"/>
+    <mvc:view-controller path="/menu/to/page.html" view-name="menu-page"/>
+
+
+    <!--注册拦截器-->
+    <!--
+        <mvc:interceptors>
+            <mvc:interceptor>
+                &lt;!&ndash;            指定要拦截的资源，设置为拦截一切&ndash;&gt;
+                <mvc:mapping path="/**"/>
+                &lt;!&ndash;            配置不拦截的资源,登录页面以及登录验证&ndash;&gt;
+                <mvc:exclude-mapping path="/admin/do/login.html"/>
+                <mvc:exclude-mapping path="/login/page.html"/>
+                &lt;!&ndash;            拦截器的类名&ndash;&gt;
+                <bean class="com.XYF.crowd.interceptor.LoginInterceptor"/>
+            </mvc:interceptor>
+        </mvc:interceptors>-->
+
+    <!--    配置SpringSecurity-->
+    <!--<context:component-scan base-package="com.XYF.crowd.config" />-->
+
+    <!-- 如果想在父容器中使用BCryptPasswordEncoder 对象，在需要配置 BCryptPasswordEncoder 的 bean，否则是找不到该组件的，要么就是配置一个盐值加密类 -->
+    <bean id="passwordEncoder"
+          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+</beans>

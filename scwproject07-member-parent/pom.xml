@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.XYF</groupId>
+    <artifactId>scwproject07-member-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>ScwProject07-member-parent</name>
+    <description>as a parent project and it is unqiue</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <!--	连接子工程-->
+    <modules>
+        <module>../scwproject08-member-eureka</module>
+        <module>../scwproject09-member-entity</module>
+        <module>../scwproject10-member-mysql-provider</module>
+        <module>../scwproject11-member-redis-provider</module>
+        <module>../scwproject12-member-authentication-consumer</module>
+        <module>../scwproject13-member-project-consumer</module>
+        <module>../scwproject14-member-order-consumer</module>
+        <module>../scwproject15-member-pay-consumer</module>
+        <module>../scwproject16-member-zuul</module>
+        <module>../scwproject17-member-api</module>
+    </modules>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- 导入 SpringCloud 需要使用的依赖信息 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.SR2</version>
+                <type>pom</type>
+                <!-- import依赖范围表示将spring-cloud-dependencies包中的依赖信息导入 -->
+                <scope>import</scope>
+            </dependency>
+            <!-- 导入 SpringBoot 需要使用的依赖信息 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.1.6.RELEASE</version>
+                <!--				指定这个工程是作为父工程-->
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--            springboot测试依赖-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>2.1.6.RELEASE</version>
+            </dependency>
+
+
+            <!--            mybatis-plus整合后这个的唯一作用为生成数据表等，其实mybatis-plus也有一样的生成插件，可以用但没必要-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.0.5</version>
+            </dependency>
+
+
+            <!--			mybatis-plus 整合springboot依赖-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.0.5</version>
+            </dependency>
+
+            <!--MySQL驱动-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+            </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <!--        配置为自动注入以及模块化管理，通常和spring-boot-dependencies联合使用-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.6.RELEASE</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

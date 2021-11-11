@@ -1,0 +1,37 @@
+server:
+  port: 4000
+spring:
+  application:
+    name: xyf-crowd-auth
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  redis:
+    port: 6379
+    password: xyf123456
+    host: 120.26.64.250
+  session:
+    store-type: redis
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+
+#配置阿里短信
+short:
+  message:
+    app-code: 4ba1def73d53413182dda462ef199c80   #短信接口的appCode
+    customize-host: https://dfsns.market.alicloudapi.com #短信接口调用地址
+    customize-method: post #请求方式x
+    customize-path: /data/send_sms  #自定义发送短信功能路径
+    template-id: TPL_0001  #测试模板
+    sign: 5 #签名编号
+
+
+ribbon:
+  ReadTimeOut: 100000
+  ConnectTimeOut: 100000
+
+

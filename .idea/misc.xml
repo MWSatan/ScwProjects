@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <type id="Spring" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/ScwProject05-common-util/pom.xml" />
+        <option value="$PROJECT_DIR$/ScwProject06-common-reverse/pom.xml" />
+        <option value="$PROJECT_DIR$/scwproject07-member-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/scwproject08-member-eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/scwproject09-member-entity/pom.xml" />
+        <option value="$PROJECT_DIR$/scwproject10-member-mysql-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/scwproject11-member-redis-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/scwproject12-member-authentication-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/scwproject13-member-project-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/scwproject14-member-order-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/scwproject15-member-pay-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/scwproject16-member-zuul/pom.xml" />
+        <option value="$PROJECT_DIR$/scwproject17-member-api/pom.xml" />
+        <option value="$PROJECT_DIR$/ScwProject01-admin-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/ScwProject02-admin-webui/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

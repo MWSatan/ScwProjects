@@ -1,0 +1,38 @@
+server:
+  port: 2000
+
+spring:
+  application:
+    name: xyf-mysql-provider
+    #配置数据库连接信息
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/project_crowd?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    name: mydb
+
+
+#eureka客户的配置信息
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+
+  #指定mapper映射文件位置
+mybatis-plus:
+  mapper-locations: classpath:mybatis/mapper/*Mapper.xml
+  configuration:
+    #    设置
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.XYF.crowd.entity
+
+logging:
+  level:
+    com.XYF.corwd.mapper: debug
+    com.XYF.crowd.test: debug
+
+ribbon:
+  ReadTimeOut: 100000
+  ConnectTimeOut: 100000

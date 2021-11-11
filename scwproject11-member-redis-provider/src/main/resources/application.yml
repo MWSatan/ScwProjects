@@ -1,0 +1,17 @@
+server:
+  port: 3000
+
+spring:
+  application:
+    name: xyf-redis-provider
+  redis:
+    host: 120.26.64.250
+    port: 6379
+    password: xyf123456
+
+#eureka客户的配置信息
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+

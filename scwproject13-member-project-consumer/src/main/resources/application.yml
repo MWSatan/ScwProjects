@@ -1,0 +1,30 @@
+server:
+  port: 5000
+
+
+spring:
+  application:
+    name: xyf-crowd-project
+  redis:
+    host: 120.26.64.250
+    password: xyf123456
+    port: 6379
+  session:
+    store-type: redis
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+
+aliyun:
+  oss:
+    access-key-id: LTAI5t67j23heWgPWo2szvdW
+    access-key-secret: GAEZXo7jIQ33KtwFjhr2HtUesgXMnK
+    bucket-domain: xyf01.oss-cn-hangzhou.aliyuncs.com
+    bucket-name: xyf01
+    end-point: oss-cn-hangzhou.aliyuncs.com
+

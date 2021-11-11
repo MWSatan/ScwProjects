@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <context-param>
+        <!--        加载spring的xml文件-->
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring-persist-*.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- 配置 CharacterEncodingFilter 解决 POST 请求的字符乱码问题 -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <!-- 指定字符集 -->
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <!-- 强制请求进行编码 -->
+        <init-param>
+            <param-name>forceRequestEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <!-- 强制响应进行编码 -->
+        <init-param>
+            <param-name>forceResponseEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>springDispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:DispatcherServlet.xml</param-value>
+        </init-param>
+        <!--        Servlet创建对象为第一次接受到请求的时候-->
+        <!--        而DispatcherServlet创建对象后有大量的“框架初始化”工作，不适合第一次请求-->
+        <!--       值越小，servlet的优先级越高，就越先被加载,最小为0 -->
+        <!--        而设置为1就是为了让初始化后再来启动而DispatcherServlet-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>springDispatcherServlet</servlet-name>
+        <!-- DispatcherServlet 映射的 URL 地址 -->
+        <!-- 大白话：什么样的访问地址会交给 SpringMVC 来处理 -->
+        <!-- 配置方式一：符合 RESTFUL 风格使用“/”，表示拦截所有请求-->
+        <!-- <url-pattern>/</url-pattern> -->
+
+        <!-- 配置方式二：请求扩展名
+           优点1：静态资源完全不经过SpringMvc,不需要特殊处理
+           优点2：可以实现伪静态效果。表面看起来是访问一个html文件这样的静态资源，但是实际上经过java代码运算
+              伪静态作用1：给黑客入侵增加难度
+              伪静态作用2：不符合RESTFUL风格
+         -->
+        <url-pattern>*.html</url-pattern>
+
+        <!--
+                如果一个Ajax请求拓展名是html，但是实际上服务器给浏览器返回的是json数据，
+                二者就不匹配了，会出现406错误
+                -->
+<!--        为了让ajax能顺利的拿到json数据，所以得单独设置一个json的拓展名-->
+        <url-pattern>*.json</url-pattern>
+    </servlet-mapping>
+
+</web-app>

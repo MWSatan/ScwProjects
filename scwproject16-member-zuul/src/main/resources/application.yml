@@ -1,0 +1,50 @@
+server:
+  port: 80  #配置了host文件域名后，这个80需要使用域名来登录即访问其他的等等
+
+spring:
+  application:
+    name: xyf-crowd-zuul
+  redis:
+    port: 6379
+    password: xyf123456
+    host: 120.26.64.250
+  session:
+    store-type: redis
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+
+zuul:
+  ignored-services: "*"  #忽略所有微服务名称，不能使用微服务来访问
+  sensitive-headers: "*" #在zuul 向其他微服务重定向时保持原本头信息（请求头、响应头）
+  routes:
+    crowd-portal:
+      service-id: xyf-crowd-auth
+      path: /** # ** 表示访问多层路径
+      #add-host-header: true  #这个害人不浅，加了后直接传了数据，不走ZuulFilter
+    crowd-project:
+      service-id: xyf-crowd-project
+      path: /project/**
+    crowd-order:
+      service-id: xyf-crowd-order
+      path: /order/**
+    crowd-pay:
+      service-id: xyf-crowd-pay
+      path: /pay/**
+
+ribbon:
+  eureka:
+    enabled: true
+  ReadTimeout: 999999
+  ConnectTimeout: 999999
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 999999
