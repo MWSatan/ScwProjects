@@ -86,7 +86,7 @@ public class ProjectConsumerHandler {
         session.removeAttribute(CrowdConstant.MESSAGE_ATTR_NAME_TEMP_PROJECTVO);
 
 //        重定向到成功页面
-        return "redirect:http://www.crowd.com/project/success/project/page.html";
+        return "redirect:http://www.xyf2021.ltd/project/success/project/page.html";
     }
 
     /**
@@ -304,7 +304,7 @@ public class ProjectConsumerHandler {
         session.setAttribute(CrowdConstant.MESSAGE_ATTR_NAME_TEMP_PROJECTVO, projectVo);
 
 //        由于在路由配置了/project/** 所以发送请求需要加上这个project
-        return "redirect:http://www.crowd.com/project/return/info/page.html";
+        return "redirect:http://www.xyf2021.ltd/project/return/info/page.html";
 
     }
 

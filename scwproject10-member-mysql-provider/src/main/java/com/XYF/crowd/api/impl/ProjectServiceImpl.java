@@ -201,7 +201,6 @@ public class ProjectServiceImpl implements ProjectService {
 
 //            获得该项目剩余的天数
             Integer lastDay = (int) (detailProjectVO.getDay() - spendDay);
-            detailProjectVO.setLastDay(lastDay);
 
             qw.eq("id", projectId);
             ProjectPO projectPO = projectPOMapper.selectOne(qw);
@@ -209,6 +208,7 @@ public class ProjectServiceImpl implements ProjectService {
 
             if (lastDay > 0) {
                 projectPO.setStatus(1);
+                detailProjectVO.setLastDay(lastDay);
             }
 
             if (lastDay == 0 && percentage >= 100) {

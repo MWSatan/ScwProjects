@@ -72,11 +72,11 @@
                                     class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="member.html"
-                                       th:href="@{http://www.crowd.com/auth/member/to/center/page.html}"><i
+                                       th:href="@{http://www.xyf2021.ltd/auth/member/to/center/page.html}"><i
                                         class="glyphicon glyphicon-scale"></i> 会员中心</a></li>
                                 <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
                                 <li class="divider"></li>
-                                <li><a href="index.html" th:href="@{http://www.crowd.com/auth/member/to/logout}"> <i
+                                <li><a href="index.html" th:href="@{http://www.xyf2021.ltd/auth/member/to/logout}"> <i
                                         class="glyphicon glyphicon-off"></i> 退出系统</a></li>
                             </ul>
                         </li>
@@ -134,7 +134,7 @@
 
                             $(function () {
                                 $("#launchCrowdBtn").click(function () {
-                                    window.location.href = "http://www.crowd.com/project/agree/project/page.html";
+                                    window.location.href = "http://www.xyf2021.ltd/project/agree/project/page.html";
                                 })
 
 
@@ -195,8 +195,13 @@
                                                                     [[${memberorderVO.percentage}]]%
                                                                 </div>
                                                                 <div style="float:right;"><i title="截至日期"
-                                                                                             class="glyphicon glyphicon-calendar"></i>
-                                                                    剩余[[${memberorderVO.lastDate}]]天
+                                                                                             class="glyphicon glyphicon-calendar">
+                                                                    <p th:if="${ memberorderVO.lastDate<=0}">End</p>
+                                                                    <p th:if="${ memberorderVO.lastDate>0}">
+                                                                        剩余[[${memberorderVO.lastDate}]]天</p>
+                                                                </i>
+
+
                                                                 </div>
                                                                 </p>
                                                                 <br>
@@ -206,7 +211,7 @@
                                                                          th:style="'width: '+${memberorderVO.percentage}+'%;'"
                                                                          aria-valuemin="0" aria-valuemax="100"
                                                                          style="width: 40%">
-                                                                        <span th:text="${memberorderVO.statusText}">众筹中</span>
+                                                                        <span th:text="${memberorderVO.statusText}"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -226,7 +231,8 @@
                                                         <div class="btn-group-vertical" role="group"
                                                              aria-label="Vertical button group">
                                                             <button type="button" class="btn btn-default"
-                                                                    th:if="${ memberorderVO.lastDate>0 && memberorderVO.status==1 }">筹集中
+                                                                    th:if="${ memberorderVO.lastDate>0 && memberorderVO.status==1 }">
+                                                                筹集中
                                                             </button>
                                                             <button type="button" class="btn btn-default"
                                                                     th:onclick="'javascript:delOrder(\''+${memberorderVO.id}+'\');'"
@@ -384,7 +390,7 @@
 
                 if (response.result == "SUCCESS") {
                     alert("删除成功");
-                    window.location.href = "http://www.crowd.com/member/my/crowd/page.html";
+                    window.location.href = "http://www.xyf2021.ltd/member/my/crowd/page.html";
                 } else {
                     alert(response.message);
 
@@ -469,8 +475,10 @@
                                                                     title="目标金额"></i> 已完成 ${n.percentage}%
                                                             </div>
                                                             <div style="float:right;"><i title="截至日期"
-                                                                                         class="glyphicon glyphicon-calendar"></i>
-                                                                剩余 ${n.deadLine}天
+                                                                                         class="glyphicon glyphicon-calendar">
+                                                                                     剩余 ${n.deadLine}天
+                                                                                       </i>
+
                                                             </div>
                                                             </p>
                                                             <br>
@@ -490,8 +498,8 @@
                                                 <td style="vertical-align:middle;">
                                                     <div class="btn-group-vertical" role="group"
                                                          aria-label="Vertical button group">
-                                                            <a  class="btn btn-default" href="http://www.crowd.com/project/portal/show/project/detail/${n.projectId}">项目浏览</a>
-<!--                                                            <a  class="btn btn-default" href="http://www.crowd.com/del/member/my/project/${n.projectId}"  >删除项目</a>-->
+                                                            <a  class="btn btn-default" href="http://www.xyf2021.ltd/project/portal/show/project/detail/${n.projectId}">项目浏览</a>
+<!--                                                            <a  class="btn btn-default" href="http://www.xyf2021.ltd/del/member/my/project/${n.projectId}"  >删除项目</a>-->
                                                     </div>
                                                 </td>
                                             </tr>`;

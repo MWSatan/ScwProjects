@@ -47,7 +47,7 @@ public class OrderConsumerHandler {
         OrderProjectVO orderProjectVO = (OrderProjectVO) session.getAttribute(CrowdConstant.ATTR_NAME_ORDER_PROJECT);
         Integer returnCount = orderProjectVO.getReturnCount();
 
-        return "redirect:http://www.crowd.com/order/confirm/order/info/" + returnCount;
+        return "redirect:http://www.xyf2021.ltd/order/confirm/order/info/" + returnCount;
     }
 
     @RequestMapping("/confirm/order/info/{returnCount}")

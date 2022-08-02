@@ -75,11 +75,11 @@
 
                         <li class="active">
                             <a rel="nofollow" href="javascript:;"
-                               th:href="@{http://www.crowd.com/project/agree/project/page.html}"><i
+                               th:href="@{http://www.xyf2021.ltd/project/agree/project/page.html}"><i
                                     class="glyphicon glyphicon-edit"></i> 发起项目</a>
                         </li>
                         <li>
-                            <a rel="nofollow" th:href="@{http://www.crowd.com/member/my/crowd/page.html}"
+                            <a rel="nofollow" th:href="@{http://www.xyf2021.ltd/member/my/crowd/page.html}"
                                href="minecrowdfunding.html"><i class="glyphicon glyphicon-user"></i>
                                 我的众筹</a>
                         </li>
@@ -105,11 +105,11 @@
 
                             <li class="active">
                                 <a rel="nofollow" href="javascript:;"
-                                   th:href="@{http://www.crowd.com/project/agree/project/page.html}"><i
+                                   th:href="@{http://www.xyf2021.ltd/project/agree/project/page.html}"><i
                                         class="glyphicon glyphicon-edit"></i> 发起项目</a>
                             </li>
                             <li>
-                                <a rel="nofollow" th:href="@{http://www.crowd.com/member/my/crowd/page.html}"
+                                <a rel="nofollow" th:href="@{http://www.xyf2021.ltd/member/my/crowd/page.html}"
                                    href="minecrowdfunding.html"><i class="glyphicon glyphicon-user"></i>
                                     我的众筹</a>
                             </li>
@@ -177,7 +177,11 @@
                                              th:style="'width: '+${detailProjectVO.percentage}+'%;'"
                                              style="width: 60%;"></div>
                                     </div>
-                                    <p>剩余 [[${detailProjectVO.lastDay}]] 天</p>
+                                    <p>
+
+                                    <p th:if="${ detailProjectVO.lastDay<=0}">End</p>
+                                    <p th:if="${ detailProjectVO.lastDay>0}">
+                                        剩余[[${detailProjectVO.lastDay}]]天</p>
                                     <div>
                                         <p><span>已有[[${detailProjectVO.supporterCount}]]人支持该项目</span></p>
                                         <!-- <button type="button" class="btn  btn-warning btn-lg btn-block"
@@ -237,7 +241,7 @@
 
                                         <p>预计发放时间：项目筹款成功后的[[${return.deliveryDate}]]天内</p>
                                         <a type="button" class="btn  btn-warning btn-lg"
-                                           th:href="'http://www.crowd.com/order/confirm/return/info/'+${detailProjectVO.projectId}+'/'+${return.returnId}"
+                                           th:href="'http://www.xyf2021.ltd/order/confirm/return/info/'+${detailProjectVO.projectId}+'/'+${return.returnId}"
                                            onclick="window.location.href='pay-step-1.html'" th:if="${detailProjectVO.status<3}">支持
                                         </a>
                                         <br><br>

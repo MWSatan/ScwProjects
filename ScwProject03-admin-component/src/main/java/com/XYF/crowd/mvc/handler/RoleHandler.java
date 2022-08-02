@@ -55,6 +55,9 @@ public class RoleHandler {
     @PreAuthorize("hasRole('超级管理员')||hasAuthority('role:add')")
     public ResultEntity<String> addRole(Role role) throws LoginFailedException {
 
+        if (role.getName().equals("超级管理员")) {
+            return ResultEntity.failWithMessage("无法添加超级权限");
+        }
 //      调用service方法
         roleService.addRoleName(role);
 
@@ -69,7 +72,9 @@ public class RoleHandler {
     @PreAuthorize("hasRole('超级管理员')||hasAuthority('role:edit')")
     public boolean editRole(Role role) throws LoginFailedException {
 
-        System.out.println(role);
+        if (role.getId()==99){
+            return false;
+        }
 //      调用service方法
         boolean flag = roleService.editRoleName(role);
 
@@ -83,9 +88,13 @@ public class RoleHandler {
     @PreAuthorize("hasRole('超级管理员')&&hasAuthority('role:delete')")
     public ResultEntity<String> removeRole(@RequestBody List<Integer> roleList) throws LoginFailedException {
 
-        roleList.forEach(roleId ->{
-            System.out.println("删除的ID为： "+roleId);
-        });
+
+
+        for (Integer id : roleList){
+            if (id==99){
+                return ResultEntity.failWithMessage("删除失败");
+            }
+        }
         roleService.removeRole(roleList);
         return ResultEntity.successWithoutData();
 

@@ -112,7 +112,7 @@ public class MemberHandler {
     public String logout(HttpSession httpSession) {
 
         httpSession.invalidate();
-        return "redirect:http://www.crowd.com";
+        return "redirect:http://www.xyf2021.ltd";
     }
 
     @RequestMapping("/auth/member/do/login")
@@ -149,7 +149,7 @@ public class MemberHandler {
             MemberLoginVO memberLoginVO = new MemberLoginVO(memberPO.getId(), memberPO.getUsername(), memberPO.getEmail());
             httpSession.setAttribute(CrowdConstant.ATTR_NAME_MEMBER, memberLoginVO);
 //            如果你是使用域名登录这个的话，需要在路径前面加入域名，否则它还是跳转到localhost:4000中，那么cookie就无法传达
-            return "redirect:http://www.crowd.com/auth/member/to/center/page.html";
+            return "redirect:http://www.xyf2021.ltd/auth/member/to/center/page.html";
 //            return "member-center";
         } else {
             model.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE, CrowdConstant.MESSAGE_LOGIN_FAiLIED);
@@ -222,7 +222,7 @@ public class MemberHandler {
         }
 
 //        避免刷新浏览器导致重新再执行注册
-        return "redirect:http://www.crowd.com/auth/member/to/login/page.html";
+        return "redirect:http://www.xyf2021.ltd/auth/member/to/login/page.html";
     }
 
     @RequestMapping("/auth/member/send/short/message.json")

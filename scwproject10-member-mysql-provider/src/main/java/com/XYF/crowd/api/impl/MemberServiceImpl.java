@@ -59,21 +59,6 @@ public class MemberServiceImpl implements MemberService {
         List<MemberOrderVO> memberOrderVOList = memberPOMapper.selectMemberOrder(memberId);
         memberOrderVOList.forEach(memberOrderVO -> {
 
-            switch (memberOrderVO.getStatus()) {
-                case 0:
-                    memberOrderVO.setStatusText("审核中");
-                    break;
-                case 1:
-                    memberOrderVO.setStatusText("众筹中");
-                    break;
-                case 2:
-                    memberOrderVO.setStatusText("众筹成功");
-                    break;
-                case 3:
-                    memberOrderVO.setStatusText("众筹失败");
-                    break;
-            }
-
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             try {
@@ -88,7 +73,36 @@ public class MemberServiceImpl implements MemberService {
 
 //            获得该项目剩余的天数
                 Integer lastDay = (int) (memberOrderVO.getDay() - spendDay);
-                memberOrderVO.setLastDate(lastDay);
+
+
+                if (lastDay > 0) {
+                    memberOrderVO.setStatus(1);
+                    memberOrderVO.setLastDate(lastDay);
+                }
+
+                if (lastDay <= 0 && memberOrderVO.getPercentage() >= 100) {
+                    memberOrderVO.setStatus(2);
+                }
+
+                if (lastDay <= 0 && memberOrderVO.getPercentage() < 100) {
+                    memberOrderVO.setStatus(3);
+                }
+
+
+                switch (memberOrderVO.getStatus()) {
+                    case 0:
+                        memberOrderVO.setStatusText("审核中");
+                        break;
+                    case 1:
+                        memberOrderVO.setStatusText("众筹中");
+                        break;
+                    case 2:
+                        memberOrderVO.setStatusText("众筹成功");
+                        break;
+                    case 3:
+                        memberOrderVO.setStatusText("众筹失败");
+                        break;
+                }
 
 
             } catch (ParseException e) {
@@ -118,20 +132,7 @@ public class MemberServiceImpl implements MemberService {
 
         memberLauchInfoVOList.forEach(memberLaunchProjectVO -> {
 
-            switch (memberLaunchProjectVO.getStatus()) {
-                case 0:
-                    memberLaunchProjectVO.setStatusText("审核中");
-                    break;
-                case 1:
-                    memberLaunchProjectVO.setStatusText("众筹中");
-                    break;
-                case 2:
-                    memberLaunchProjectVO.setStatusText("众筹成功");
-                    break;
-                case 3:
-                    memberLaunchProjectVO.setStatusText("众筹失败");
-                    break;
-            }
+
 
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -147,7 +148,34 @@ public class MemberServiceImpl implements MemberService {
 
 //            获得该项目剩余的天数
                 Integer lastDay = (int) (memberLaunchProjectVO.getDay() - spendDay);
-                memberLaunchProjectVO.setDeadLine(lastDay);
+                if (lastDay > 0) {
+                    memberLaunchProjectVO.setStatus(1);
+                    memberLaunchProjectVO.setDeadLine(lastDay);
+                }
+
+                if (lastDay <= 0 && memberLaunchProjectVO.getPercentage() >= 100) {
+                    memberLaunchProjectVO.setStatus(2);
+                }
+
+                if (lastDay <= 0 && memberLaunchProjectVO.getPercentage() < 100) {
+                    memberLaunchProjectVO.setStatus(3);
+                }
+
+
+                switch (memberLaunchProjectVO.getStatus()) {
+                    case 0:
+                        memberLaunchProjectVO.setStatusText("审核中");
+                        break;
+                    case 1:
+                        memberLaunchProjectVO.setStatusText("众筹中");
+                        break;
+                    case 2:
+                        memberLaunchProjectVO.setStatusText("众筹成功");
+                        break;
+                    case 3:
+                        memberLaunchProjectVO.setStatusText("众筹失败");
+                        break;
+                }
 
 
             } catch (ParseException e) {

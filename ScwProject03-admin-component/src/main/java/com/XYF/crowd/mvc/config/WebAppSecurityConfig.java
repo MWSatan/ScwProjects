@@ -32,7 +32,7 @@ import java.io.IOException;
         prePostEnabled boolean类型，默认为false
         true ：表示可以启用@PreAuthorize注解和 @PostAuthorize注解
  */
-@EnableGlobalMethodSecurity(prePostEnabled=true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     //注入UserDetails类
@@ -84,15 +84,15 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
             @Override
             public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
                 request.setAttribute("exception", new Exception(CrowdConstant.MESSAGE_NOT_AUTHORITY));
-                request.getRequestDispatcher("/WEB-INF/error.jsp").forward(request,response);
+                request.getRequestDispatcher("/WEB-INF/error.jsp").forward(request, response);
             }
         });
 //
 //        权限注解形式：先执行DelegatingFilterProxy，再去执行DispatchServlet中，然后才会执行springmvc拦截器再到检测到有权限注解，然后权限不足就执行异常映射机制
 
 
-        http.authorizeRequests().antMatchers("/admin/do/login.html").permitAll()
-                .antMatchers("/login/page.html").permitAll()
+        http.authorizeRequests().antMatchers("/login/page.html").permitAll()
+                .antMatchers("/login/page.html").permitAll().antMatchers("/security/do/login.html").permitAll()
                 .antMatchers("/bootstrap/**", "/css/**", "/fonts/**", "/img/**", "/jquery/**", " /layer/**", "/script/**", "/ztree/**")
                 .permitAll()
                 .antMatchers("/admin/get/page.html")//针对分页显示admin数据设定访问控制
@@ -104,13 +104,13 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login/page.html")
                 .loginProcessingUrl("/security/do/login.html")
-                .defaultSuccessUrl("/main/page.html",true)
+                .defaultSuccessUrl("/main/page.html", true)
                 .usernameParameter("loginAcct")
                 .passwordParameter("userPswd")
                 .and()
                 .logout()
                 .logoutUrl("/security/do/logout.html")
-                .logoutSuccessUrl("/admin/do/login.html")
+                .logoutSuccessUrl("/login/page.html")
                 .and()
                 .csrf().disable();
 

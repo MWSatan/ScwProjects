@@ -11,12 +11,10 @@
         <module name="ScwProject02-admin-webui" />
         <module name="ScwProject07-member-parent" />
         <module name="ScwProject06-common-reverse" />
-        <module name="extra01-ajax" />
         <module name="scwproject10-member-mysql-provider" />
         <module name="scwproject11-member-redis-provider" />
         <module name="scwproject12-member-authentication-consumer" />
         <module name="scwproject16-member-zuul" />
-        <module name="scwproject07-member-parent" />
         <module name="ScwProject04-admin-entity" />
         <module name="scwproject09-member-entity" />
         <module name="scwproject08-member-eureka" />
@@ -52,17 +50,17 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ScwProject07-member-parent" options="" />
-      <module name="scwproject07-member-parent" options="" />
-      <module name="scwproject08-member-eureka" options="" />
-      <module name="scwproject09-member-entity" options="" />
-      <module name="scwproject10-member-mysql-provider" options="" />
-      <module name="scwproject11-member-redis-provider" options="" />
-      <module name="scwproject12-member-authentication-consumer" options="" />
-      <module name="scwproject13-member-project-consumer" options="" />
-      <module name="scwproject14-member-order-consumer" options="" />
-      <module name="scwproject15-member-pay-consumer" options="" />
-      <module name="scwproject16-member-zuul" options="" />
-      <module name="scwproject17-member-api" options="" />
+      <module name="scwproject07-member-parent" options="-parameters" />
+      <module name="scwproject08-member-eureka" options="-parameters" />
+      <module name="scwproject09-member-entity" options="-parameters" />
+      <module name="scwproject10-member-mysql-provider" options="-parameters" />
+      <module name="scwproject11-member-redis-provider" options="-parameters" />
+      <module name="scwproject12-member-authentication-consumer" options="-parameters" />
+      <module name="scwproject13-member-project-consumer" options="-parameters" />
+      <module name="scwproject14-member-order-consumer" options="-parameters" />
+      <module name="scwproject15-member-pay-consumer" options="-parameters" />
+      <module name="scwproject16-member-zuul" options="-parameters" />
+      <module name="scwproject17-member-api" options="-parameters" />
     </option>
   </component>
 </project>

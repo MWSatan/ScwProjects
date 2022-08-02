@@ -28,6 +28,15 @@
     <mvc:resources location="/script/" mapping="/script/**"/>
     <mvc:resources location="/myJs/" mapping="/myJs/**"/>
 
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >
+        <property name="messageConverters">
+            <list>
+                <ref bean="mappingJacksonHttpMessageConverter" /><!-- json转换器 -->
+            </list>
+        </property>
+    </bean>
+    <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+
 
     <!--基于xml的异常映射-->
 

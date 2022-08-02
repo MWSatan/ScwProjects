@@ -44,6 +44,7 @@ public class AdminHandler {
 
 
     @RequestMapping(value = "/admin/edit.html")
+    @PreAuthorize("hasRole('超级管理员')||hasAnyAuthority('user:delete')")
     public String editAdmin(
             Admin admin,
             @RequestParam("pageNum") Integer pageNum,
@@ -55,6 +56,7 @@ public class AdminHandler {
     }
 
     @RequestMapping(value = "/admin/to/edit/page.html")
+    @PreAuthorize("hasRole('超级管理员')||hasAnyAuthority('user:delete')")
     public String toEditAdmin(
             @RequestParam(value = "adminId") Integer adminId,
             @RequestParam("pageNum") Integer pageNum,
@@ -69,7 +71,7 @@ public class AdminHandler {
     }
 
     @RequestMapping(value = "/admin/save.html")
-    @PreAuthorize("hasAuthority('user:save')")
+    @PreAuthorize("hasRole('超级管理员')")
     public String addAdmin(Admin admin) {
 
         adminService.saveAdmin(admin);
@@ -82,6 +84,7 @@ public class AdminHandler {
      * @PathVariable @PathVariable是spring3.0的一个新功能：接收请求路径中占位符的值
      */
     @RequestMapping("/admin/remove/{adminId}.json")
+    @PreAuthorize("hasRole('超级管理员')")
     @ResponseBody
     public boolean reSearch(@PathVariable(value = "adminId") Integer id,
                             HttpSession session, ModelAndView model

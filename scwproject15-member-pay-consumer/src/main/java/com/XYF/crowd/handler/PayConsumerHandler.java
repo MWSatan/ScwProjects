@@ -143,7 +143,7 @@ public class PayConsumerHandler {
 
 //            return "trade_no:" + payOrderNum + "<br/>out_trade_no:" + orderNum + "<br/>total_amount:" + orderAmount;
 //            返回到众筹页面
-            return "redirect:http://www.crowd.com/member/my/crowd/page.html";
+            return "redirect:http://www.xyf2021.ltd/member/my/crowd/page.html";
         } else {
 
 //            页面显示信息
