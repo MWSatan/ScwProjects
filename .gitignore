@@ -1,0 +1,6 @@
+# Project exclude paths
+/ScwProject02-admin-webui/target/
+/ScwProject03-admin-component/target/
+/ScwProject04-admin-entity/target/
+# Project exclude paths
+/ScwProject06-common-reverse/target/
